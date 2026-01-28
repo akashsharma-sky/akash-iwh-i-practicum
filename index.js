@@ -45,7 +45,7 @@ app.get('/update-cobj', (req, res) => {
 
 app.post('/update-cobj', async (req, res) => {
     const { model, company, model_year } = req.body;
-    axios.get(`https://api.hubspot.com/crm/v3/objects/${CUSTOM_OBJECT}`, 
+    axios.post(`https://api.hubspot.com/crm/v3/objects/${CUSTOM_OBJECT}`, 
         { 
         properties: {
             model,
