@@ -19,10 +19,12 @@ const headers = {
 // TODO: ROUTE 1 - Homepage route to list all custom object data. Render the data in a pug template.
 
 app.get('/', async (req, res) => {
-    axios.get(`https://api.hubspot.com/crm/v3/objects/${CUSTOM_OBJECT}?properties=model,company,model_year`, { 
-        headers 
-    })
-}).then(response => {
+    axios.get(`https://api.hubspot.com/crm/v3/objects/${CUSTOM_OBJECT}?properties=model,company,model_year`, 
+        { 
+            headers 
+        }
+    )
+.then(response => {
     const data = response.data.results;
     res.render('homepage', { 
         title: 'Car Table', 
@@ -31,6 +33,7 @@ app.get('/', async (req, res) => {
 }).catch(error => {
     console.error('Error fetching custom object data:', error);
     res.send('Error fetching data');
+});
 });
 
 // TODO: ROUTE 2 - Show Form Page to create or update car data.
