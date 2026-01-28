@@ -1,25 +1,26 @@
 doctype html
-html 
-    head 
-        title= `${title}`
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/css/style.css")
-    body    
-        h1 Car Table 
+html
+  head
+    title #{title}
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
 
-        a(href="/update-cobj")  Add New Car
-        br
-        br
+  body
+    h1 Car Table
 
-        table(border="1" cellpadding="8")
-            thead 
-                tr
-                    th Name
-                    th Company 
-                    th Model Year
-            tbody     
-                each car in data
-                    tr
-                        td= car.properties.model
-                        td= car.properties.company
-                        td= car.properties.model_year
+    a(href="/update-cobj") Add New Car
+    br
+    br
+
+    table(border="1" cellpadding="8")
+      thead
+        tr
+          th Name
+          th Company
+          th Model Year
+      tbody
+        each car in data
+          tr
+            td= car.properties.model
+            td= car.properties.company
+            td= car.properties.model_year
