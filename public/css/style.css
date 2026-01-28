@@ -3,6 +3,10 @@
 body, * {
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    padding: 0px;
+}
+
+body {
     padding: 20px;
 }
 
