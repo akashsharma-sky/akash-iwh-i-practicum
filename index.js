@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
     res.send('Error fetching data');
 });
 
-// TODO: ROUTE 2 - Submit form data to render the update form for your car object.
+// TODO: ROUTE 2 - Show Form Page to create or update car data.
 
 app.get('/update-cobj', (req, res) => {
     res.render('updates', { 
@@ -43,7 +43,24 @@ app.get('/update-cobj', (req, res) => {
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
-// * Code for Route 3 goes here
+app.post('/update-cobj', async (req, res) => {
+    const { model, company, model_year } = req.body;
+    axios.get(`https://api.hubspot.com/crm/v3/objects/${CUSTOM_OBJECT}`, 
+        { 
+        properties: {
+            model,
+            company,
+            model_year
+        }
+    }, { headers })
+        .then((response) => {
+            res.redirect('/');
+        })
+        .catch((error) => {
+            console.error('Error creating/updating car data:', error);
+            res.send('Error creating/updating data');
+        });
+});
 
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 
